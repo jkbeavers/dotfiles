@@ -7,6 +7,8 @@ set -o vi
 #	[[ $TERM != "screen" ]] && exec tmux
 #fi
 
+notes
+
 alias cnsi='ssh -X jkbeavers@knot.cnsi.ucsb.edu'
 alias grep='grep --color=auto'
 alias ls='ls --color=always'
