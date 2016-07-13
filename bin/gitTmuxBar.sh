@@ -29,7 +29,7 @@ function fileNums ()
 {
 	local changes=$(git status | grep "new file:" | wc -l)									# print number of new files not commited	
 	local modified=$(git status | grep "modified:" | wc -l)									# print number of files not staged for commit:	
-	local untracked=$(git status | grep -A1000 Untracked | tail -n +4 | sed \$d | wc -l)	# print number of files not tracked
+	local untracked=$(git status | grep -A100 Untracked | tail -n +4 | head -n -2  | wc -l)	# print number of files not tracked
 	
 	echo "$(($changes + $modified))-"$untracked"" 
 }
