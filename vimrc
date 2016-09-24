@@ -33,3 +33,14 @@ set hidden
 
 " Increase number of commands held in history
 set history=100
+execute pathogen#infect()
+call pathogen#helptags()
+
+" Open NERDTree automatically
+" autocmd vimenter * NERDTree 
+" Open NERDTree if no files are specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Toggle NERDTree panel
+map <C-n> :NERDTreeToggle<CR>
+
