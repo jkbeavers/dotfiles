@@ -3,7 +3,7 @@ export LC_COLLATE="C"
 export VISUAL="vim"
 export PYTHONPATH=$PYTHONPATH:/home/beavers/Documents/python/modules
 
-set -o vi
+#set -o vi
 #if [[ $DISPLAY == ":0" ]]; then 
 #	[[ $TERM != "screen" ]] && exec tmux
 #fi

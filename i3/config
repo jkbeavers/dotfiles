@@ -83,7 +83,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # Default Workspaces
 # To find a window's class use xprop
-assign [class="chromium"] $ws3
+assign [class="Chromium"] $ws3
 assign [class="Firefox"] $ws4
 assign [class="Thunderbird"] $ws5
 

@@ -15,8 +15,6 @@ set ignorecase
 " search like in modern browsers
 set incsearch
 
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
 
 " be smart with yo tabs
 set smarttab
@@ -26,13 +24,18 @@ set shiftwidth=4
 set tabstop=4
 
 " Show line numbers
-set number
+set relativenumber
 
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
 
 " Increase number of commands held in history
 set history=100
+
+" Enable file type detection and do language-dependent indenting.
+filetype plugin indent on
+
+" Plug-in manager (apt-vim)
 execute pathogen#infect()
 call pathogen#helptags()
 
