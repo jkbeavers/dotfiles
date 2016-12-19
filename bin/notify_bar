@@ -1,0 +1,6 @@
+#!/bin/bash
+
+timeout 2s lemonbar -d -g 100x60+1250+15 -f "monospace:size=15" -f "FontAwesome:size=20" -B "#1f1f1f" -F "#d3d3d3" -p
+
+#info_bar.sh | lemonbar -g 1346x20+20+20 -f "FontAwesome:size=10" -f "monospace:size=10" -B "#000000" -F "#d3d3d3" -p
+

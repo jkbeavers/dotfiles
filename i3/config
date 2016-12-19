@@ -2,13 +2,14 @@
 set $mod Mod1
 
 # font
-#font pango:fontawesome-webfont 10 
-font pango:System San Francisco Display 10
+font pango:fontawesome-webfont 10 
+#font pango:System San Francisco Display 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -51,23 +52,23 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1: " 
-set $ws2 "2: " 
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
+set $ws1 "" 
+set $ws2 "" 
+set $ws3 ""
+set $ws4 ""
+set $ws5 ""
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+2 workspace $ws2; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+3 workspace $ws3; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+4 workspace $ws4; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+5 workspace $ws5; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+6 workspace 6; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+7 workspace 7; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+8 workspace 8; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+9 workspace 9; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+0 workspace 10; exec --no-startup-id ~/dotfiles/bin/workspaces
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -85,7 +86,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # To find a window's class use xprop
 assign [class="Chromium"] $ws3
 assign [class="Firefox"] $ws4
-assign [class="Thunderbird"] $ws5
+#assign [class="Thunderbird"] $ws5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -113,7 +114,7 @@ new_window pixel 2
 #for_window [class="chromium"] normal
 
 bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+#    status_command i3blocks -c ~/.i3/i3blocks.conf
 	colors {
 	background $bg-color
 	separator #757575
@@ -128,25 +129,29 @@ bar {
 
 # make shit see-through (-f fade transition)
 exec --no-startup-id compton -f  
-exec_always feh --bg-scale /home/beavers/Pictures/backgrounds/space.jpg
+exec_always feh --bg-scale /home/taro/Downloads/wallpaper.jpg
 
 #--------------------- Keybindings ---------------------
 
 # Toggle movement
-bindsym $mod+n workspace next
-bindsym $mod+p workspace prev
+bindsym $mod+n workspace next; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+p workspace prev; exec --no-startup-id ~/dotfiles/bin/workspaces
+
 
 # start rofi (dmenu) (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 5 -columns 2 -eh 2 -width 100 -padding 300 -font "System San Francisco Display 18"
+bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec rofi -show run -lines 4 -columns 1 -eh 2 -width 30 -padding 30 -font "monospace 12"
+
 
 # Set Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% # increase
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0  -10% # decrease
-bindsym XF86AudioMute exec pactl set-sink-volume 0 0
-
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/dotfiles/bin/changeVolume 1 # increase
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/dotfiles/bin/changeVolume 0 # decrease
+bindsym XF86AudioMute exec --no-startup-id ~/dotfiles/bin/changeVolume 2 # mute
 # Set Brightness (Fn + Home/End)
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/dotfiles/bin/changeBrightness 1 # increase 
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/dotfiles/bin/changeBrightness 0 # decrease
+# Show Battery 
+bindsym XF86LaunchA exec --no-startup-id ~/dotfiles/bin/battery.sh
 
 #--------------------- Modes ----------------------
 # Move Floating Windows
@@ -200,9 +205,9 @@ bindsym e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you r
 bindsym $mod+x mode "  "
 
 mode "  " {
-	bindsym l exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1, mode "default" 
-	bindsym r exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default" 
-	bindsym o exec --no-startup-id xrandr --output VGA1 --off, mode "default"
+	bindsym l exec --no-startup-id xrandr --output HDMI2 --auto --left-of eDP1, mode "default" 
+	bindsym r exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1, mode "default" 
+	bindsym o exec --no-startup-id xrandr --output HDMI2 --off, mode "default"
 
 	# Return to normal mode: Enter or Escape
 	bindsym Return mode "default"

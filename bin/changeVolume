@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $1 -ge 2 ] ; then
+	pactl set-sink-volume 0 0
+	notifyStr=" 0%"
+else
+	if [ $1 -eq 1 ] ; then
+		pm="+"
+		icon=
+	else 
+		pm="-"
+		icon=
+		cmd="set-sink-volume 0 0"	
+	fi
+	pactl set-sink-volume 0 ${pm}10%
+	notifyStr="$icon `amixer | grep Playback | tail -1 | awk '{gsub(/\[|\]/,"",$5);print $5}'`"
+fi
+
+echo "%{c}$notifyStr" | notify_bar

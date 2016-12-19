@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# maybe install and use auto ssh if the connects drops a lot
+port=1080
+ssh -fNnD $port -p 22222 jbu@kentaro86.tk
+chromium -proxy-server="socks://localhost:$port" 
+
+
+# necessary so that the ssh tunnel doesn't get killed right away
+sleep 2
+
+# number of seconds to wait before checking if chromium is alive
+WAIT_SECONDS=10
+
+while true
+do
+	if [ -z "`pidof chromium`" ] 
+	then
+		sshPID=`pgrep "ssh*D*"`
+		echo "Killing ssh at $sshPID"
+		kill $sshPID
+		exit
+	else
+		sleep $WAIT_SECONDS	
+	fi
+done

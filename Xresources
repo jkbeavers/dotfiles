@@ -1,17 +1,86 @@
-! rofi settings
+! --------------------
+! urxvt
+! --------------------
 
-rofi.color-window:          #000000,#0C73C2
-rofi.color-normal:          #000000,#A0A0A0,#000000,#0C73C2,#FFFFFF
+! transparency
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+! font
+URxvt*letterSpace     : -2
+!URxvt*font : xft:mensch:size=9
+URxvt*font: xft:monospace:size=10
+
+! disable scrollbar
+URxvt*scrollBar: false
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt*fading      : 40
+URxvt*fadeColor   : #002233
+URxvt*cursorColor : #aa2222
+URxvt*background  : #222222
+URxvt*foreground  : #eeeedd
+URxvt*pointerColorForeground: #93a1a1
+
+! 0: black
+URxvt*color0  : #000000
+URxvt*color8  : #666666
+
+! 1: red
+URxvt*color1  : #cc7777
+URxvt*color9  : #cf6171
+
+! 2: green
+URxvt*color2  : #00cd00
+URxvt*color10 : #c5f779
+
+! 3: yellow
+URxvt*color3  : #ffbb66
+URxvt*color11 : #fff796
+
+! 4: blue
+URxvt*color4  : #22aa99
+URxvt*color12 : #bbbbff
+
+! 5: magenta
+URxvt*color5  : #ff66cc
+URxvt*color13 : #f935f9
+
+! 6: cyan
+URxvt*color6  : #88bbbb
+URxvt*color14 : #14f0f0
+
+! 7: white
+URxvt*color7  : #eeeedd
+URxvt*color15 : #ffffee
+
+
+
+
+! --------------------
+! rofi settings
+! --------------------
+
+rofi.color-window:          #000000,#8b0000,#008b8b
+rofi.color-normal:          #000000,#A0A0A0,#000000,#008b8b,#FFFFFF
+!#0C73C2  blueish
 rofi.color-urgent:          #000000,#FFB2B2,#000000,#0C73C2,#FFFFFF
 rofi.color-active:          #000000,#C272C1,#000000,#FFFFFF,#000000
 rofi.color-enabled:         true
-rofi.borderwidth:	        1
-rofi.lines: 5
+rofi.lines: 4
 rofi.eh: 2
-rofi.width: 100
-rofi.padding:	250
-rofi.opacity:	60
-rofi.bw: 0
+rofi.width: 32.5
+rofi.padding:	30
+rofi.opacity:	80
+rofi.bw: 2
 !rofi.terminal: st
 rofi.glob: true
 rofi.tokenize: false
+

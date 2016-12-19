@@ -1,0 +1,57 @@
+#!/bin/bash
+
+active_json ()
+{
+	echo $1 | jq ".[$2].\"$3\""
+}
+
+occupied_json ()
+{
+	echo $1 | jq ".nodes[1].nodes[1].nodes[$2].nodes[].window" 2> /dev/null
+}
+
+floatOccupied_json ()
+{
+	echo $1 | jq ".nodes[1].nodes[1].nodes[$2].floating_nodes[0].nodes[].window" 2> /dev/null
+}
+
+ws_info=`i3-msg -t get_workspaces`
+ws_tree=`i3-msg -t get_tree`
+for ws_n in 0 1 2 3 4 5 
+do
+	if [ `active_json $ws_info $ws_n "visible"` = "true" ]
+	then
+		active=$ws_n	
+	fi
+	
+	if [ ! -z "`occupied_json "$ws_tree" $ws_n`" ] || [ ! -z "`floatOccupied_json "$ws_tree" $ws_n`" ]
+	then
+		occupied="$occupied $ws_n"
+	fi
+done
+
+#echo "Current workspace: $active"
+#echo "Occupied workspaces: $occupied"
+
+out="%{c}"
+for a in $occupied
+do
+	if [ $a -eq $active ]
+	then
+		out="$out %{F#8b0000}%{F-}"
+	else
+		out="$out "
+	fi
+done
+
+echo "$out" | notify_bar 
+
+# iterate last nodes[$num] to cycle workspaces
+# this will tell you if there is a non-floating window
+#i3-msg -t get_tree| jq ".nodes[1].nodes[1].nodes[1].nodes[].window"
+
+# interate 3rd nodes for different workspaces
+#i3-msg -t get_tree| jq ".nodes[1].nodes[1].nodes[0].floating_nodes[0].nodes[].window"
+
+
+

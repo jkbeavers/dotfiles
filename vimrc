@@ -32,18 +32,24 @@ set hidden
 " Increase number of commands held in history
 set history=100
 
+"
+command Tex execute "w" | execute "silent !pdflatex %" | execute "redraw!"
+
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 
-" Plug-in manager (apt-vim)
-execute pathogen#infect()
-call pathogen#helptags()
+" Specify a directory for plugins 
+call plug#begin('~/.vim/plugged')
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Add plugins to &runtimepath
+call plug#end()
 
 " Open NERDTree automatically
 " autocmd vimenter * NERDTree 
 " Open NERDTree if no files are specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Toggle NERDTree panel
 map <C-n> :NERDTreeToggle<CR>
 
