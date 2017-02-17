@@ -7,8 +7,8 @@
 ## untracked file to the right bar in tmux.
 ###############################################
 
-repo1=/home/beavers/Documents/cpp/giordanocpp/												# cpp computational physics repo
-repo2=/home/beavers/dotfiles/																# dotfiles repo
+repo1="/home/taro/Documents/resume"												# cpp computational physics repo
+repo2="/home/taro/Documents/thesis"																# dotfiles repo
 
 # returns push string if git push is needed
 function pushout ()																			
@@ -31,16 +31,25 @@ function fileNums ()
 	local modified=$(git status | grep "modified:" | wc -l)									# print number of files not staged for commit:	
 	local untracked=$(git status | grep -A100 Untracked | tail -n +4 | head -n -2  | wc -l)	# print number of files not tracked
 	
-	echo "$(($changes + $modified))-"$untracked"" 
+	#echo "$(($changes + $modified))-"$untracked"" 
+	if [ -z "$(($changes + $modified))-"$untracked"" ]
+	then
+		echo 0
+	fi
 }
 
-cd "$repo1"
-pushit1=$(pushout)
-files1=$(fileNums)
+if [ -z $(cd "$repo1" && fileNums) ] || [ -z $(cd "$repo2" && fileNums) ]
+then
+	echo 
+fi
 
-cd "$repo2"
-pushit2=$(pushout)
-files2=$(fileNums)
-
-tmuxOut=" $pushit1 cpp $files1 $pushit2 dot $files2"
-echo $tmuxOut
+#cd "$repo1"
+##pushit1=$(pushout)
+#files1=$(fileNums)
+#
+#cd "$repo2"
+##pushit2=$(pushout)
+#files2=$(fileNums)
+#
+#tmuxOut=" $pushit1 cpp $files1 $pushit2 dot $files2"
+#echo $tmuxOut

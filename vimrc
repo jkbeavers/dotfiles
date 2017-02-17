@@ -6,6 +6,9 @@ syntax on
 
 colorscheme material
 
+" allow multiple files open in different buffers
+set hidden
+
 " set to autoread when a file is changed outside
 set autoread
 
@@ -25,6 +28,8 @@ set tabstop=4
 
 " Show line numbers
 set relativenumber
+" Sets absolute number on current line (if done after set relativenumber)
+set number
 
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
@@ -34,6 +39,8 @@ set history=100
 
 "
 command Tex execute "w" | execute "silent !pdflatex %" | execute "redraw!"
+command TexErr execute "w" | execute "!pdflatex %" 
+command NotePdf execute "w" | execute "silent !pandoc '%:p' -o ~/Documents/notePdfs/'%:t'.pdf" | execute "redraw!" 
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -42,8 +49,15 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+Plug 'xolox/vim-misc' " Dependency for notes
+Plug 'xolox/vim-notes'
 " Add plugins to &runtimepath
 call plug#end()
+
+:let g:notes_directories = ['~/Documents/Notes']
+:let g:notes_markdown_program = 1
+
 
 " Open NERDTree automatically
 " autocmd vimenter * NERDTree 

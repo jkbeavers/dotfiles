@@ -52,23 +52,23 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "" 
-set $ws2 "" 
-set $ws3 ""
-set $ws4 ""
-set $ws5 ""
+set $ws1 "1: " 
+set $ws2 "2: " 
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+2 workspace $ws2; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+3 workspace $ws3; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+4 workspace $ws4; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+5 workspace $ws5; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+6 workspace 6; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+7 workspace 7; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+8 workspace 8; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+9 workspace 9; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+0 workspace 10; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -93,16 +93,26 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-set $rofi-blue		 #0c73c2
+#set $bg-color 	         #2f343f
+#set $inactive-bg-color   #2f343f
+#set $text-color          #f3f4f5
+#set $inactive-text-color #676E7D
+#set $urgent-bg-color     #E53935
+#set $rofi-blue		 #0c73c2
+
+# Setting color from .Xresources
+# takes color from .Xresources and sets it to color_var
+# 					color_var			color		backup
+set_from_resource $bg-color 			color0		#2f343f
+set_from_resource $inactive-bg-color 	color8		#2f343f
+set_from_resource $text-color 			color7		#f3f4f5
+set_from_resource $inactive-text-color 	color15		#676E7D
+set_from_resource $urgent-bg-color 		color9		#E53935
+
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color         $bg-color          $text-color          #00ff00
+client.focused          $bg-color         	$bg-color          $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -112,6 +122,7 @@ hide_edge_borders both
 new_window pixel 2
 #for_window [class="chromium"] border pixel 0
 #for_window [class="chromium"] normal
+
 
 bar {
 #    status_command i3blocks -c ~/.i3/i3blocks.conf
@@ -134,8 +145,8 @@ exec_always feh --bg-scale /home/taro/Downloads/wallpaper.jpg
 #--------------------- Keybindings ---------------------
 
 # Toggle movement
-bindsym $mod+n workspace next; exec --no-startup-id ~/dotfiles/bin/workspaces
-bindsym $mod+p workspace prev; exec --no-startup-id ~/dotfiles/bin/workspaces
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
 
 
 # start rofi (dmenu) (a program launcher)
@@ -152,6 +163,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/dotfiles/bin/changeBrightness
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/dotfiles/bin/changeBrightness 0 # decrease
 # Show Battery 
 bindsym XF86LaunchA exec --no-startup-id ~/dotfiles/bin/battery.sh
+
 
 #--------------------- Modes ----------------------
 # Move Floating Windows

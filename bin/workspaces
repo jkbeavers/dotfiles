@@ -44,6 +44,11 @@ do
 	fi
 done
 
+if [ -z $out ] 
+then
+	out="%{F#8b0000}%{F-}"
+fi
+
 echo "$out" | notify_bar 
 
 # iterate last nodes[$num] to cycle workspaces
