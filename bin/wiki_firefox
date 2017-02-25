@@ -1,0 +1,23 @@
+#!/bin/bash
+
+ssh -fNn -L 8080:localhost:80 jbu
+firefox -no-remote -P wiki 192.168.1.15
+
+# necessary so that the ssh tunnel doesn't get killed right away
+sleep 2
+
+# number of seconds to wait before checking if firefox is alive
+WAIT_SECONDS=10
+
+while true
+do
+	if [ -z "`pidof "firefox localhost"`" ]
+	then
+		sshPID=`pgrep "ssh*L*"`
+		echo "Killing ssh at $sshPID"
+		kill $sshPID
+		exit
+	else
+		sleep $WAIT_SECONDS
+	fi
+done
