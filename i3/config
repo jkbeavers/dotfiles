@@ -10,6 +10,8 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec urxvt; exec "bash -c 'sleep 0.2s;i3-msg floating enable;i3-msg resize set 500px 400px;i3-msg move position 50px 175px'"
+
 
 # kill focused window
 bindsym $mod+Shift+q kill

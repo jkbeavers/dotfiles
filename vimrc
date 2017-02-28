@@ -40,7 +40,7 @@ set history=100
 "
 command Tex execute "w" | execute "silent !pdflatex %" | execute "redraw!"
 command TexErr execute "w" | execute "!pdflatex %" 
-command NotePdf execute "w" | execute "silent !pandoc '%:p' -o ~/Documents/notePdfs/'%:t'.pdf" | execute "redraw!" 
+command NotePdf execute "w" | execute "silent !pandoc --preserve-tabs --read=markdown '%:p' -o ~/Documents/notePdfs/'%:t'.pdf" | execute "redraw!" 
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on

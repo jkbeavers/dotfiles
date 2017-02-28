@@ -1,4 +1,1 @@
-#!/bin/bash
-
-cd ~/Downloads/anki-2.0.43
-./bin/anki &
+/home/taro/Downloads/anki-2.0.43/bin/anki

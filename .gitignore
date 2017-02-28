@@ -1,7 +1,5 @@
 # ignore i3 logs
 i3/logs/*
-bin/secure_chromium
-bin/wiki_firefox
 bin/workspaces
 bin/notifyd
 bin/bar_notifyd
