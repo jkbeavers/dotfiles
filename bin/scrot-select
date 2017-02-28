@@ -1,0 +1,5 @@
+#!/bin/bash
+
+i3float='sleep 0.2s; i3-msg floating enable >> /dev/null;i3-msg resize set 450px 150px >> /dev/null;i3-msg move position 50px 175px >> /dev/null'
+
+urxvt -e bash -c "$i3float; scrot-help" 

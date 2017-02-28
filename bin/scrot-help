@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ppath=/home/taro/Documents/Notes/pics/
+
+printf "Enter save path\n(default=$ppath):"
+read inPath
+if [ ! -z $inPath ]; then
+	ppath=$inPath
+fi
+printf "Image will be saved to\n$ppath\n"
+echo "Please enter image name:"
+read fname
+echo "Select image area"
+scrot -s "${fname}.png" -e "mv ${fname}.png $ppath"
+

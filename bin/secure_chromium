@@ -2,7 +2,7 @@
 
 # maybe install and use auto ssh if the connects drops a lot
 port=1080
-ssh -fNnD $port -p 22222 jbu@kentaro86.tk
+ssh -fNnD $port jbu
 chromium -proxy-server="socks://localhost:$port" 
 
 

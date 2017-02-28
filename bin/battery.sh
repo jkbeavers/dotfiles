@@ -32,5 +32,10 @@ batteryOutput ()
 
 	echo "$out $timel"
 }
-echo "%{c}`batteryOutput 1`" | notify_bar
+
+if [ -z `echo $bat1 | awk '{print $5}'` ]; then
+	echo "%{c}`batteryOutput 0`" | notify_bar
+else
+	echo "%{c}`batteryOutput 1`" | notify_bar
+fi
 #echo `batteryOutput 0 ;batteryOutput 1` | lemonbar -d -g 200x200+50+150 -f "FontAwesome:size=15" -f "monospace" -B "#000000" -p 
