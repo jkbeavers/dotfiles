@@ -20,16 +20,4 @@ then
 	fi
 fi
 
-nguyen='/home/taro/Documents/nguyen-lab/simulations/'
-alias cnsi='ssh jkbeavers@knot.cnsi.ucsb.edu'
-alias grep='grep --color=auto'
-alias ls='ls --color=always'
-
-alias nplot="python ${nguyen}nplot.py"
-alias gisc="python ${nguyen}getIsc.py"
-alias gvoc="python ${nguyen}getVoc.py"
-alias jfreq="python ${nguyen}satFreq.py"
-alias explot="python ${nguyen}excelPlotter.py"
-alias mkFrames="python ${nguyen}createFrames.py"
-
 alias bat='acpi -b | grep Battery'

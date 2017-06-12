@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/taro/dotfiles/bin'
 let g:netrw_dirhist_2='/home/taro/tmp'
 let g:netrw_dirhist_3='/home/taro/dotfiles/vim/plugged/vim-notes/misc/notes/user'
@@ -7,3 +7,5 @@ let g:netrw_dirhist_4='/home/taro/dotfiles/vim/plugged/vim-notes/ftplugin'
 let g:netrw_dirhist_5='/home/taro/dotfiles/vim/plugged/vim-notes/autoload/xolox/notes'
 let g:netrw_dirhist_6='/home/taro/Documents/Notes'
 let g:netrw_dirhist_7='/home/taro/dotfiles/bin'
+let g:netrw_dirhist_8='/home/taro/Arduino/libraries/SoftwareServo/examples'
+let g:netrw_dirhist_9='/home/taro/dotfiles'
